@@ -1,0 +1,5 @@
+[
+    { "title": "Home", "link": "?page=home" },
+    { "title": "Chi Sono", "link": "?page=about" },
+    { "title": "servizi", "link": "?page=services" }
+]

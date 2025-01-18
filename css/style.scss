@@ -1,0 +1,197 @@
+@import "colors";
+
+@font-face { 
+    font-family: "Electrolize-Regular";
+    src: url(../font/Electrolize-Regular.ttf);
+}
+
+/* posizionamento Generale */
+*{
+    font-family: Electrolize-Regular ;
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+main{
+    background-color: $main-color;
+}
+nav {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    background-color: $nav-footer-bg;
+    padding: 10px;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: $border-nav-img
+}
+
+nav h2 {
+    color: $nav-title-color;
+    margin: 0;
+    text-shadow: $primary-text-shadow;
+    font-size: xx-large;
+}
+
+
+.list {
+    display: flex;
+}
+
+ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    position: relative;
+    margin-right: 20px;
+}
+nav ul a {
+    text-decoration: none;
+    display: flex;
+    align-items: center; 
+    font-size: 1.0em;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: $secondary-text-color;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul a:hover{
+    background-color: $footer-hover;
+    color: $primary-text-color;
+    transform: scale(1.2);
+}
+
+.hamburger {
+    display: none;
+}
+
+footer {
+    width: 100%;
+    padding: 20px;
+    background-color: $nav-footer-bg;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column; /* Dispone tutto in una colonna */
+    align-items: center;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+.footer-social {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.footer-social {
+    text-align: center;
+}
+
+.footer-social a{
+    text-decoration: none;
+    color: $secondary-text-color;
+    transition: color 0.3s ease;
+    font-size: 0.8em
+}
+
+.footer-social a:hover {
+    color: $footer-hover; 
+}
+
+.footer-contact h3,
+.footer-social h3 {
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: $primary-text-color;
+}
+
+.footer-contact li{
+    color: $primary-text-color;
+}
+
+.footer-contact a{
+    text-decoration: none;
+    color: $secondary-text-color;
+    transition: color 0.3s ease;
+    font-size: 0.8em;
+}
+
+.footer-contact a:hover {
+    color: $footer-hover; 
+}
+
+.footer-copyright{
+    color: $primary-text-color;
+    font-size: 0.9em;
+
+}
+
+
+
+
+/* Stile del menu a tendina su dispositivi piccoli */
+@media (max-width: 768px) {
+    #menu-list {
+        display: none; 
+        position: absolute; 
+        right: 0; 
+        top: 60px; 
+        background-color: $nav-footer-bg; 
+        border: 1px solid #ccc; 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 200px; 
+        z-index: 1000;
+        flex-direction: column;
+    }
+
+    #menu-list.active {
+        display: flex; /* Mostrare il menu quando attivato */
+    }
+
+    .hamburger {
+        display: block; /* Mostra l'icona hamburger */
+        cursor: pointer;
+        font-size: 24px;
+        color: $primary-text-color;
+    }
+
+    .navbar-menu {
+        display: flex;
+        flex-direction: column; 
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar-menu li {
+        padding: 10px; 
+        border-bottom: 1px solid #ccc;
+    }
+
+    .navbar-menu li:last-child {
+        border-bottom: none; /* Rimuovere il divisore dall'ultimo elemento */
+    }
+
+    .navbar-menu li a {
+        text-decoration: none;
+        color: $secondary-text-color;
+        display: block;
+    }
+}
