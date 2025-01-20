@@ -17,11 +17,11 @@
         </div>
         <div>
             <a href="?page=about" class="btn" title="about">Scopri di più</a>
-        <div>
+        </div>
     </div>
 </section>
 
-<?php 
+<?php
 // Array di servizi
 $services = [
     ['title' => 'Web Design', 'description' => 'Creazione di siti web moderni e responsive.', 'image' => 'img/web-design.jpg'],
@@ -87,4 +87,3 @@ $socialPosts = [
         </div>
     <?php endforeach; ?>
 </section>
-

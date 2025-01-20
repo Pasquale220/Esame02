@@ -2,7 +2,7 @@
     <div class="hero-content">
         <h1>Chi Sono</h1>
         <p>
-            Sono un professionista nella progettazione e sviluppo di soluzioni digitali. 
+            Sono un professionista nella progettazione e sviluppo di soluzioni digitali.
             La mia missione è trasformare idee in realtà, creando progetti unici e funzionali.
         </p>
     </div>
@@ -62,17 +62,49 @@ $skills = [
 // Carica i dati dalla pagina JSON
 $contactData = json_decode(file_get_contents('contact_data.json'), true);
 
-// Salva i dati del form in un file testuale
+$errors = [];
+$successMessage = "";
+
+$name = "";
+$email = "";
+$message = "";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userData = [
-        'name' => $_POST['name'],
-        'email' => $_POST['email'],
-        'message' => $_POST['message'],
-        'timestamp' => date('Y-m-d H:i:s')
-    ];
-    $log = "Nome: " . $userData['name'] . "\nEmail: " . $userData['email'] . "\nMessaggio: " . $userData['message'] . "\nData: " . $userData['timestamp'] . "\n\n";
-    file_put_contents('contact_logs.txt', $log, FILE_APPEND); // Salva i dati nel file
-    $successMessage = "Grazie per averci contattato! Ti risponderemo al più presto.";
+    // Recupera i valori compilati
+    $name = trim($_POST['name'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $message = trim($_POST['message'] ?? '');
+
+    // Validazione
+    if (empty($name)) {
+        $errors['name'] = "Il campo 'Nome' è obbligatorio.";
+    } elseif (!preg_match("/^[a-zA-Z\s]+$/u", $name)) {
+        $errors['name'] = "Il campo 'Nome' può contenere solo lettere e spazi.";
+    }
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email'] = "Inserisci un'email valida.";
+    }
+    if (empty($message)) {
+        $errors['message'] = "Il campo 'Messaggio' è obbligatorio.";
+    }
+
+    if (empty($errors)) {
+        // Salva i dati se non ci sono errori
+        $userData = [
+            'name' => $name,
+            'email' => $email,
+            'message' => $message,
+            'timestamp' => date('Y-m-d H:i:s')
+        ];
+        $log = "Nome: " . $userData['name'] . "\nEmail: " . $userData['email'] . "\nMessaggio: " . $userData['message'] . "\nData: " . $userData['timestamp'] . "\n\n";
+        file_put_contents('contact_logs.txt', $log, FILE_APPEND);
+        $successMessage = "Grazie per averci contattato! Ti risponderemo al più presto.";
+
+       
+
+        // Resetta i campi
+        $name = $email = $message = "";
+    }
 }
 ?>
 
@@ -89,22 +121,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="success-message"><?php echo $successMessage; ?></p>
     <?php endif; ?>
 
-    <form action="" method="POST" class="contact-form">
+    <form action="#form" method="POST" class="contact-form" novalidate>
         <div>
             <label for="name">Nome</label>
-            <input type="text" id="name" name="name" required>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="<?php echo htmlspecialchars($name, ENT_QUOTES); ?>"
+                class="<?php echo isset($errors['name']) ? 'error' : ''; ?>"
+                required>
+            <?php if (isset($errors['name'])): ?>
+                <p class="error-message"><?php echo $errors['name']; ?></p>
+            <?php endif; ?>
         </div>
         <div>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value="<?php echo htmlspecialchars($email, ENT_QUOTES); ?>"
+                class="<?php echo isset($errors['email']) ? 'error' : ''; ?>"
+                required>
+            <?php if (isset($errors['email'])): ?>
+                <p class="error-message"><?php echo $errors['email']; ?></p>
+            <?php endif; ?>
         </div>
         <div>
             <label for="message">Messaggio</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <textarea
+                id="message"
+                name="message"
+                rows="5"
+                class="<?php echo isset($errors['message']) ? 'error' : ''; ?>"
+                required><?php echo htmlspecialchars($message, ENT_QUOTES); ?></textarea>
+            <?php if (isset($errors['message'])): ?>
+                <p class="error-message"><?php echo $errors['message']; ?></p>
+            <?php endif; ?>
         </div>
         <button type="submit">Invia</button>
     </form>
 </section>
+
 
 <section class="stats">
     <h2>Statistiche</h2>

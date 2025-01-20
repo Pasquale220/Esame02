@@ -3,7 +3,7 @@
     <div class="hero-content">
         <h1>Dai un occhiata ai nostri progetti</h1>
         <p>
-            Scopri i nostri progetti, soluzioni creative e design innovativi che trasformano le idee in realtà. 
+            Scopri i nostri progetti, soluzioni creative e design innovativi che trasformano le idee in realtà.
             Esplora la galleria e lasciati ispirare!
         </p>
     </div>
@@ -22,7 +22,7 @@
         <div class="project-description">
             <h2>Descrizione del Progetto</h2>
             <p>
-                Questo progetto rappresenta un esempio di design innovativo e moderno, con un focus su 
+                Questo progetto rappresenta un esempio di design innovativo e moderno, con un focus su
                 funzionalità responsive e un’interfaccia intuitiva.
             </p>
             <h3>Caratteristiche principali:</h3>
@@ -52,6 +52,7 @@ $slides = [
 ];
 ?>
 <section class="carousel">
+    <h2 class="sr-only">Immagini</h2>
     <?php foreach ($slides as $slide): ?>
         <div class="slide">
             <img src="<?php echo $slide['image']; ?>" alt="Slide">

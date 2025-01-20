@@ -16,7 +16,7 @@
 
 .hero h1 {
     font-size: 3rem;
-    color: $primary-text-color;
+    color: $prymary-h-color;
     text-shadow: $primary-text-shadow;
 }
 
@@ -177,6 +177,16 @@
     color: green;
     font-weight: bold;
     margin-top: 1rem;
+}
+
+.error {
+    border: 2px solid red;
+    background-color: #ffe6e6;
+}
+.error-message  p{
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
 }
 
 /* Sezione Statistiche */
