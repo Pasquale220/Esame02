@@ -9,40 +9,65 @@
     </div>
 </section>
 
+<?php
+// Carica i dati dal file JSON
+$projectsJson = file_get_contents('project.json');
+$projects = json_decode($projectsJson, true);
+
+// Ottieni l'ID del progetto dalla query string
+$projectId = isset($_GET['id']) ? $_GET['id'] : null;
+
+// Cerca il progetto corrispondente
+$selectedProject = null;
+foreach ($projects as $project) {
+    if ($project['id'] === $projectId) {
+        $selectedProject = $project;
+        break;
+    }
+}
+?>
+
 <!-- Porject Details -->
-<section class="project-detail">
-    <div class="project-header">
-        <h1>Nome del Progetto</h1>
-        <p class="project-category">Categoria: Web Design</p>
-    </div>
-    <div class="project-content">
-        <div class="project-image">
-            <img src="img/e-commerce.jpg" alt="Immagine principale del progetto">
+<?php if ($selectedProject): ?>
+    <!-- Dettagli del Progetto -->
+    <section class="project-detail">
+        <div class="project-header">
+            <h1><?php echo $selectedProject['title']; ?></h1>
+            <p class="project-category">Categoria: <?php echo $selectedProject['category']; ?></p>
         </div>
-        <div class="project-description">
-            <h2>Descrizione del Progetto</h2>
-            <p>
-                Questo progetto rappresenta un esempio di design innovativo e moderno, con un focus su
-                funzionalità responsive e un’interfaccia intuitiva.
-            </p>
-            <h3>Caratteristiche principali:</h3>
-            <ul>
-                <li>Design completamente responsive</li>
-                <li>Performance elevate con caricamento rapido</li>
-                <li>Compatibilità con tutti i browser principali</li>
-            </ul>
-            <h3>Tecnologie utilizzate:</h3>
-            <ul class="technologies">
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node.js</li>
-            </ul>
-            <a href="?page=services" class="back-to-projects" title="torna a progetti">Torna ai Progetti</a>
+        <div class="project-content">
+            <div class="project-image">
+                <img src="<?php echo $selectedProject['image']; ?>" alt="<?php echo $selectedProject['title']; ?>">
+            </div>
+            <div class="project-description">
+                <h2>Descrizione del Progetto</h2>
+                <p><?php echo $selectedProject['details']; ?></p>
+                <h3>Caratteristiche principali:</h3>
+                <ul>
+                    <?php foreach ($selectedProject['features'] as $feature): ?>
+                        <li><?php echo $feature; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+                <h3>Tecnologie utilizzate:</h3>
+                <ul class="technologies">
+                    <?php foreach ($selectedProject['technologies'] as $tech): ?>
+                        <li><?php echo $tech; ?></li>
+                    <?php endforeach; ?>
+                </ul>
+                <a href="services.php" class="back-to-projects" title="Torna ai Servizi">Torna ai Servizi</a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+
+<?php else: ?>
+    <!-- Progetto Non Trovato -->
+    <section class="project-not-found">
+        <h1>Progetto Non Trovato</h1>
+        <p>Il progetto richiesto non esiste o non è disponibile.</p>
+        <a href="services.php" class="back-to-projects" title="Torna ai Servizi">Torna ai Servizi</a>
+    </section>
+<?php endif; ?>
 
 <?php
 $slides = [

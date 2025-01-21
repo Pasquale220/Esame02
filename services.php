@@ -6,40 +6,28 @@
     </div>
 </section>
 
-<?php 
-$services = [
-    [
-        'title' => 'Web Design',
-        'description' => 'Creazione di siti web moderni e responsive.',
-        'details' => 'Progettiamo siti web unici che combinano estetica e funzionalità per soddisfare le esigenze del tuo business.',
-        'projects' => [
-            ['title' => 'Portfolio Design', 'image' => 'img/portfolio-design.jpg', 'link' => '?page=project'],
-            ['title' => 'Landing Page Startup', 'image' => 'img/startup.jpg', 'link' => '?page=project'],
-            ['title' => 'E-commerce Store', 'image' => 'img/e-commerce.jpg', 'link' => '?page=project']
-        ]
-    ],
-    [
-        'title' => 'Cybersecurity',
-        'description' => 'Protezione avanzata per i dati e le infrastrutture online.',
-        'details' => 'Offriamo soluzioni su misura per proteggere i dati sensibili e le infrastrutture digitali.',
-        'projects' => [
-            ['title' => 'Firewall Integration', 'image' => 'img/firewall.jpg', 'link' => '?page=project'],
-            ['title' => 'VPN Setup', 'image' => 'img/vpn.jpg', 'link' => '?page=project'],
-            ['title' => 'Data Encryption System', 'image' => 'img/data-encryption.jpg', 'link' => '?page=project']
-        ]
-    ],
-    [
-        'title' => 'App Mobile',
-        'description' => 'Sviluppo di applicazioni mobile per Android e iOS.',
-        'details' => 'Creiamo applicazioni mobile intuitive, performanti e scalabili per migliorare la tua presenza digitale.',
-        'projects' => [
-            ['title' => 'Fitness Tracker App', 'image' => 'img/fitness.jpg', 'link' => '?page=project'],
-            ['title' => 'Food Delivery App', 'image' => 'img/delivery.jpg', 'link' => '?page=project'],
-            ['title' => 'Social Networking App', 'image' => 'img/social.jpg', 'link' => '?page=project']
-        ]
-    ]
-];
+<?php
+// Leggi i dati dal file JSON
+$servicesJson = file_get_contents('services.json');
+$services = json_decode($servicesJson, true);
+
+// Ottieni l'ID del progetto dalla query string
+$projectId = isset($_GET['id']) ? $_GET['id'] : null;
+
+// Cerca il progetto corrispondente
+$selectedProject = null;
+
+foreach ($services as $service) {
+    foreach ($service['projects'] as $project) {
+        if ($project['id'] === $projectId) {
+            $selectedProject = $project;
+            $selectedProject['service'] = $service['title']; // Aggiungi il nome del servizio
+            break 2;
+        }
+    }
+}
 ?>
+
 <section class="services-overview">
     <h2>Esplora i Nostri Servizi</h2>
     <?php foreach ($services as $service): ?>
