@@ -1,0 +1,92 @@
+[
+    {
+        "id": "portfolio-design",
+        "title": "Portfolio Design",
+        "category": "Web Design",
+        "description": "Creazione di un portfolio professionale e moderno.",
+        "details": "Questo progetto rappresenta un esempio di design innovativo, ideale per mostrare lavori creativi.",
+        "features": ["Design completamente responsive", "Layout pulito e moderno", "Compatibilità con tutti i browser"],
+        "technologies": ["HTML5", "CSS3", "JavaScript"],
+        "image": "img/portfolio-design.jpg"
+    },
+    {
+        "id": "landing-page-startup",
+        "title": "Landing Page Startup",
+        "category": "Web Design",
+        "description": "Landing page ottimizzata per startup innovative.",
+        "details": "La pagina offre un design accattivante e conversion-focused per attrarre clienti.",
+        "features": ["Design conversion-focused", "Velocità di caricamento ottimale", "Supporto per moduli dinamici"],
+        "technologies": ["HTML5", "CSS3", "Bootstrap"],
+        "image": "img/startup.jpg"
+    },
+    {
+        "id": "ecommerce-store",
+        "title": "E-commerce Store",
+        "category": "Web Design",
+        "description": "Sviluppo di uno store online performante.",
+        "details": "Questo progetto fornisce una piattaforma intuitiva per vendere prodotti online.",
+        "features": ["Carrello integrato", "Supporto per più metodi di pagamento", "Design mobile-first"],
+        "technologies": ["Shopify", "PHP", "CSS3"],
+        "image": "img/e-commerce.jpg"
+    },
+    {
+        "id": "vpn-setup",
+        "title": "VPN Setup",
+        "category": "Cybersecurity",
+        "description": "Configurazione di una VPN sicura per l'accesso remoto.",
+        "details": "Progetto per garantire una connessione sicura tra dispositivi remoti e reti aziendali.",
+        "features": ["Protezione avanzata", "Facile configurazione", "Compatibilità multipiattaforma"],
+        "technologies": ["OpenVPN", "Linux", "WireGuard"],
+        "image": "img/vpn.jpg"
+    },
+    {
+        "id": "firewall-integration",
+        "title": "Firewall Integration",
+        "category": "Cybersecurity",
+        "description": "Implementazione di firewall per la protezione delle reti aziendali.",
+        "details": "Progetto dedicato alla sicurezza informatica per prevenire accessi non autorizzati.",
+        "features": ["Firewall di ultima generazione", "Monitoraggio in tempo reale", "Scalabilità per reti complesse"],
+        "technologies": ["Cisco ASA", "Fortinet", "Python"],
+        "image": "img/firewall.jpg"
+    },
+    {
+        "id": "data-encryption-system",
+        "title": "Data Encryption System",
+        "category": "Cybersecurity",
+        "description": "Sistemi avanzati di crittografia per la protezione dei dati sensibili.",
+        "details": "Progetto per implementare la crittografia AES per i database aziendali.",
+        "features": ["Crittografia end-to-end", "Compatibilità con più piattaforme", "Prestazioni elevate"],
+        "technologies": ["AES", "Java", "MySQL"],
+        "image": "img/data-encryption.jpg"
+    },
+    {
+        "id": "fitness-tracker-app",
+        "title": "Fitness Tracker App",
+        "category": "App Mobile",
+        "description": "Applicazione mobile per il monitoraggio del fitness.",
+        "details": "Un'app intuitiva per monitorare attività fisiche e progressi personali.",
+        "features": ["Monitoraggio attività fisiche", "Sincronizzazione con dispositivi indossabili", "Grafici interattivi"],
+        "technologies": ["React Native", "Node.js", "MongoDB"],
+        "image": "img/fitness.jpg"
+    },
+    {
+        "id": "food-delivery-app",
+        "title": "Food Delivery App",
+        "category": "App Mobile",
+        "description": "App per la consegna di cibo a domicilio.",
+        "details": "Un'app che collega clienti e ristoranti per ordinare cibo rapidamente.",
+        "features": ["Tracciamento GPS in tempo reale", "Supporto per pagamenti online", "Design user-friendly"],
+        "technologies": ["Flutter", "Firebase", "Google Maps API"],
+        "image": "img/delivery.jpg"
+    },
+    {
+        "id": "social-networking-app",
+        "title": "Social Networking App",
+        "category": "App Mobile",
+        "description": "Applicazione per la connessione tra persone.",
+        "details": "Una piattaforma per creare e condividere contenuti tra utenti.",
+        "features": ["Condivisione di contenuti multimediali", "Messaggistica in tempo reale", "Notifiche push personalizzate"],
+        "technologies": ["Swift", "Firebase", "GraphQL"],
+        "image": "img/social.jpg"
+    }
+]
