@@ -54,7 +54,7 @@ foreach ($projects as $project) {
                         <li><?php echo $tech; ?></li>
                     <?php endforeach; ?>
                 </ul>
-                <a href="services.php" class="back-to-projects" title="Torna ai Servizi">Torna ai Servizi</a>
+                <a href="?page=services" class="back-to-projects" title="Torna ai Servizi">Torna ai Servizi</a>
             </div>
         </div>
     </section>
